@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js3</title>
+    <style>
+        table {
+            border: 2px solid black;
+        }
+        .one{
+            border: 1px dotted black;
+            background-color: rgb(132, 213, 11);
+            padding: 5px;
+            cursor: pointer;
+        }
+        td{
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <table cellspacing="0">
+            <tr>
+                <td><label for="">1st number: </label></td>
+                <td><input type="text" id="firstNumber" /></td>
+            </tr>
+            <tr>
+                <td><label for="">2nd Number</label></td>
+                <td><input type="text" id="secondNumber" /></td>
+            </tr>
+            <tr>
+                <td><input class="one" type="button" onClick="multiply()" Value="Multiply" /></td>
+                <td><input class="one" type="button" onClick="divide()" Value="Divide" /></td>
+            </tr>
+            <tr>
+                <td>Result: </td>
+                <td><span id="result"></span></td>
+            </tr>
+        </table>
+    </center>
+    <script>
+
+        function multiply() {
+            num1 = document.getElementById("firstNumber").value;
+            num2 = document.getElementById("secondNumber").value;
+            document.getElementById("result").innerHTML = num1 * num2;
+        }
+
+        function divide() {
+            num1 = document.getElementById("firstNumber").value;
+            num2 = document.getElementById("secondNumber").value;
+            document.getElementById("result").innerHTML = num1 / num2;
+        }
+        // let num1 = "";
+        // let num2 = "";
+        // let result = "";
+        // num1 = parseInt(document.getElementById('first').value)
+        // num2 = parseInt(document.getElementById('second').value)
+        // let buttons = document.querySelectorAll('.button');
+        // Array.from(buttons).forEach((button)=>{
+        //     button.addEventListener('click',(e)=>{
+        //         if(e.target.innerHTML == '*'){
+        //             result = num1*num2;
+        //             document.querySelector('input').value = result;
+        //         }
+        //         else if(e.target.innerHTML == '/'){
+        //             result = num1/num2;
+        //             document.querySelector('input').value = result;
+        //         }
+        //         else{
+        //             console.log("user is not using the calci")
+        //         }
+        //     })
+        // })
+    </script>
+</body>
+
+</html>

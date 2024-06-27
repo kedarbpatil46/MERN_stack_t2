@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js5</title>
+    <style>
+        body {
+            font: 1em sans-serif;
+            width: 200px;
+            padding: 0;
+            margin: 0 auto;
+            background: linear-gradient(275deg, #cfecd0, #e6eab4, #9edbd6);
+        }
+
+        p * {
+            display: block;
+            padding: 1vh 0 0 0;
+        }
+
+        input[type="email"] {
+            appearance: none;
+
+            width: 100%;
+            border: 1px solid #333;
+            margin: 0;
+
+            font-family: inherit;
+            font-size: 90%;
+
+            box-sizing: border-box;
+           
+        }
+        input[type="text"] {
+            appearance: none;
+
+            width: 100%;
+            border: 1px solid #333;
+            margin: 0;
+
+            font-family: inherit;
+            font-size: 90%;
+
+            box-sizing: border-box;
+           
+        }
+        input[type="url"] {
+            appearance: none;
+
+            width: 100%;
+            border: 1px solid #333;
+            margin: 0;
+
+            font-family: inherit;
+            font-size: 90%;
+
+            box-sizing: border-box;
+            
+        }
+        input{
+            height: 4vh;
+        }
+
+
+
+        /* textarea{
+            appearance: none;
+
+            width: 100%;
+            border: 1px solid #333;
+            margin: 0;
+
+            font-family: inherit;
+            font-size: 90%;
+
+            box-sizing: border-box;
+        }
+        textarea:invalid{
+            background-color: #fdd;
+        }
+        textarea:focus:invalid{
+            outline: none;
+        } */
+
+        button{
+            border: none;
+            padding: 6px 12px;
+            background-color: #900;
+            color: white;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        input:invalid {  
+            background-color: #fdd;
+        }
+
+        input:focus:invalid {
+            outline: none;
+        }
+
+       
+        .error {
+            width: 100%;
+            padding: 0;
+
+            font-size: 90%;
+            color: white;
+            background-color: #900;
+            border-radius: 0 0 5px 5px;
+
+            box-sizing: border-box;
+        }
+
+        .error.active {
+            padding: 0.5em;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form novalidate>
+        <p>
+            <label for="name">
+                <span>Name:</span>
+                <input class="yoyo" type="text" id="name" name="name" required minlength="8" />
+                <span class="error" aria-live="polite"></span>   
+            </label>
+        </p>
+        <p>
+            <label for="mail">
+                <span>Email:</span>
+                <input class="yoyo" type="email" id="mail" name="mail" required minlength="8" />
+                <span class="error" aria-live="polite"></span>
+            </label>
+        </p>
+        <p>
+            <label for="web">
+                <span>Website:</span>
+                <input class="yoyo" type="url" id="web" name="web" required minlength="8" />
+                <span class="error" aria-live="polite"></span>
+            </label>
+        </p>
+        <!-- <p>
+            <label for="mes">
+                <span>Message:</span>
+                <textarea name="mes" id="mes" cols="27" rows="5"></textarea>
+                <span class="error" aria-live="polite"></span>
+            </label>
+        </p> -->
+        <p>
+            <label for="mes">
+                <span>Message:</span>
+                <input class="yoyo" type="text" id="mes" name="mes" required minlength="1">
+                <span class="error" aria-live="polite"></span>
+            </label>
+        </p>
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+        const form = document.querySelector("form");
+        const email = document.getElementById("mail");
+        const emailError = document.querySelector("#mail + span.error");
+        
+
+        const name = document.getElementById("name")
+        const nameError = document.querySelector("#name + span.error")
+
+        const web = document.getElementById("web");
+        const webError = document.querySelector("#web + span.error")
+
+        const mes = document.getElementById("mes")
+        const mesError = document.querySelector("#mes + span.error")
+
+        name.addEventListener("input",(event) =>{
+            if (name.validity.valid) {
+               
+                nameError.textContent="";            
+                nameError.className= "error";
+            } else {
+                showError()
+            }
+        })
+
+        email.addEventListener("input", (event) => {
+            if (email.validity.valid) {
+                emailError.textContent = ""; 
+                emailError.className = "error"; 
+            } else {
+                showError1();
+            }
+        });
+
+        web.addEventListener("input",(event) =>{
+            if(web.validity.valid){
+                webError.textContent = "";
+                webError.className= "error";
+            } else {
+                showError2()
+            }
+        })
+
+        // mes.addEventListener("textarea",(event) =>{
+        //     if(mes.validity.valid){
+        //         mesError.textContent = "";
+        //         mesError.className= "error";
+        //     } else {
+        //         showError3()
+        //     }
+        // })
+
+        mes.addEventListener("input",(event) =>{
+            if(mes.validity.valid){
+                mesError.textContent = "";
+                mesError.className= "error";
+            } else {
+                showError3()
+            }
+        })
+
+        function showError(){
+            if(name.validity.valueMissing){
+                nameError.textContent ="you need to enter name";
+            } else if(name.validity.tooShort){
+                nameError.textContent = `Name should be at least ${name.minLength} characters; you entered ${name.value.length}`
+            }
+            nameError.className = "error active";
+        }
+
+        function showError1() {
+            if (email.validity.valueMissing) {
+                emailError.textContent = "You need to enter email address.";
+            } else if (email.validity.typeMismatch) {
+                emailError.textContent = "Entered value needs to be an email address.";
+            } else if (email.validity.tooShort) {
+                emailError.textContent = `Email should be at least ${email.minLength} characters; you entered ${email.value.length}.`;
+            }
+            emailError.className = "error active";
+        }
+
+        function showError2(){
+            if(web.validity.valueMissing){
+                webError.textContent ="you need to enter website"
+            }
+            else if(web.validity.typeMismatch){
+                webError.textContent="entered value needs to be a website"
+            }
+
+            else if(web.validity.tooShort){
+                webError.textContent = `website should be at least ${web.minLength} characters; you entered ${web.value.length}`;
+            }
+            webError.className = "error active";
+        }
+
+        function showError3(){
+            if(mes.validity.valueMissing){
+                mesError.textContent ="you need to enter message";
+            } 
+            else if(mes.validity.tooShort){
+                nameError.textContent = `Name should be at least ${name.minLength} characters; you entered ${name.value.length}`
+            }
+            mesError.className = "error active";
+        }
+
+
+
+        form.addEventListener("submit", (event) => {
+            
+            if (!name.validity.valid) {
+                showError();
+                event.preventDefault();
+            }
+            if (!email.validity.valid){
+                showError1();
+                event.preventDefault();
+            }
+            if (!web.validity.valid){
+                showError2();
+                event.preventDefault();
+            }
+            if (!mes.validity.valid){
+                showError3();
+                event.preventDefault();
+            }
+        });  
+
+
+        // function validate()
+        // {
+        //     // var n = document.getElementById("name").value;
+        //     // var e = document.getElementById("mail").value;
+        //     // var w = document.getElementById("web").value;
+        //     // var m = document.getElementById("mes").value;
+        //     if(name.validity.valid && email.validity.valid && web.validity.valid && mes.validity.valid)
+        //     {
+        //         return true;
+        //     }  
+        // }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js2</title>
+    <style>
+        .yo{
+            text-decoration: 3px underline rgb(32, 213, 135);
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        function alphabet_order(str) { <br>
+            return str.split('').sort().join('');<br>
+        } <br>
+        console.log(alphabet_order("webmaster")); <br>
+        document.write("Default_____ "+"webmaster")<br>
+        document.write("Afrer Arranging_____ "+ alphabet_order("webmaster"))<br>
+    </p>
+    <script>
+        function alphabet_order(str) {
+            return str.split('').sort().join('');
+        }
+        console.log(alphabet_order("webmaster"));
+        document.write('<p class="yo">Before Arranging </p>'+"<br>"+"webmaster")
+        document.write("<br>")
+        document.write('<p class="yo">After Arranging </p>' +"<br>"+ alphabet_order("webmaster"))
+    </script>
+</body>
+
+</html>

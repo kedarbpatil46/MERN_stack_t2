@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js4</title>
+    <style>
+        .box {
+            width: 250px;
+            height: 300px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 15px;
+            background-color: rgb(230, 161, 50);
+            color: white;
+            font-size: 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        p {
+            margin: 10px;
+            font-size: 30px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        body {
+            background: rgb(34, 193, 195);
+            background: linear-gradient(90deg, rgba(34, 193, 195, 1) 0%, rgba(60, 192, 177, 1) 12%, rgba(95, 191, 153, 1) 28%, rgba(150, 190, 116, 1) 53%, rgba(192, 189, 87, 1) 72%, rgba(212, 188, 74, 1) 81%, rgba(253, 187, 45, 1) 100%);
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div class="box">
+            <input type="button" onClick="date()" value="show date">
+            <p id="displayDate"></p>
+            <input type="button" onclick="time()" value="show time">
+            <p id="displayTime"></p>
+        </div>
+    </center>
+
+    <script>
+        function date() {
+            let today = new Date();
+            let day = today.getDay();
+            let daylist = ["Sunday", "Monday", "Tuesday", "Wednesday ", "Thursday", "Friday", "Saturday"];
+            let date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+            document.getElementById("displayDate").innerHTML = date;
+        }
+        function time() {
+            let today = new Date();
+            let day = today.getDay();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            document.getElementById("displayTime").innerHTML = time;
+        }
+    </script>
+
+</html>
+
+</script>
+</body>
+
+</html>

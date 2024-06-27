@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js1</title>
+    <style>
+        .yo{
+            text-decoration: 3px underline rgb(0, 174, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <p>
+        const num = 32243; <br>
+        const reverse = (num) => parseInt(String(num) <br>
+            .split("") <br>
+            .reverse() <br>
+            .join(""), 10); <br>
+        console.log(reverse(num));  <br>
+        document.write("Default_______ "+ num); <br>
+        document.write("After Reversing________ "+reverse(num));
+        
+
+    </p>
+    <script>
+        const num = 32243;
+        const reverse = (num) => parseInt(String(num)
+            .split("")
+            .reverse()
+            .join(""), 10);
+        console.log(reverse(num)); 
+
+        document.write('<p class="yo">Before Reversing </p>'+ "<br>" + num);
+        document.write("<br>");
+        document.write('<p class="yo">After Reversing </p>'+"<br>"+ reverse(num));
+    </script>
+</body>
+
+</html>
